@@ -30,8 +30,7 @@ function addBookmark() {
 
     var params = 'title=' + encodeURIComponent(title.value) +
                  '&url=' + encodeURIComponent(url.value) +
-                 '&summary=' + encodeURIComponent(summary.value) +
-                 '&tags=' + encodeURIComponent(tags.value);
+                 '&summary=' + encodeURIComponent(summary.value);
 
     // Replace any instances of the URLEncoded space char with +
     params = params.replace(/%20/g, '+');
