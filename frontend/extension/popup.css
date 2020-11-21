@@ -32,31 +32,19 @@ h1 {
   box-sizing: border-box;
 }
 
-/* Search Bar */
-.search {
-  width: 60%;
-  margin: 0 auto;
-  font-family: SF Pro Display;
-  box-sizing: border-box;
-
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-/* Search Bar Input */
-.searchTerm {
-  width: 98%;
-  outline-offset: -30px;
-  border: 2px solid #1DA1F2;
-  border-right: none;
-  padding: 5px;
-  height: 30px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: grey;
-  font-family: SF Pro Display;
-  outline-offset: -30px;
-}
-
-.searchTerm:focus{
-  color: grey;
-  font-family: SF Pro Display;
+.button {background-color: #1DA1F2;
+  
+  
 }
