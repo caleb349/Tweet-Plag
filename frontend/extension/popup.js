@@ -2,7 +2,9 @@
 // injected and returned its results
 function onPageDetailsReceived(pageDetails) {
     document.getElementById('title').value = pageDetails.title;
-    document.getElementById('url').value = pageDetails.url;
+    var id  = pageDetails.url.split('/')
+    id = id[id.length-1]
+    document.getElementById('url').value = id;
     document.getElementById('summary').innerText = pageDetails.summary;
 }
 
@@ -15,29 +17,24 @@ function addBookmark() {
     event.preventDefault();
 
     // The URL to POST our data to
-    var postUrl = 'http://post-test.local.com';
-
-    // Set up an asynchronous AJAX POST request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', postUrl, true);
-
+    var postUrl = 'http://localhost:5000/result';
+    
     // Prepare the data to be POSTed by URLEncoding each field's contents
     var title = document.getElementById('title');
     var url = document.getElementById('url');
     var summary = document.getElementById('summary');
-    var tags = document.getElementById('tags');
+    formData = new FormData();
+    formData.append("title", title.value);
+    formData.append("url", url.value);
+    formData.append("summary", summary.value);
+    // Set up an asynchronous AJAX POST request
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', postUrl, true);
 
-    var params = 'title=' + encodeURIComponent(title.value) +
-                 '&url=' + encodeURIComponent(url.value) +
-                 '&summary=' + encodeURIComponent(summary.value) +
-                 '&tags=' + encodeURIComponent(tags.value);
 
-    // Replace any instances of the URLEncoded space char with +
-    params = params.replace(/%20/g, '+');
+  
 
-    // Set correct header for form data
-    var formContentType = 'application/x-www-form-urlencoded';
-    xhr.setRequestHeader('Content-type', formContentType);
+
 
     // Handle request state change events
     xhr.onreadystatechange = function() {
@@ -46,18 +43,18 @@ function addBookmark() {
             statusDisplay.innerHTML = '';
             if (xhr.status == 200) {
                 // If it was a success, close the popup after a short delay
-                statusDisplay.innerHTML = 'Saved!';
-                window.setTimeout(window.close, 1000);
+                statusDisplay.innerHTML = xhr.responseText;
+                // window.setTimeout(window.close, 1000);
             } else {
                 // Show what went wrong
-                statusDisplay.innerHTML = 'Error saving: ' + xhr.statusText;
+                statusDisplay.innerHTML = 'Error Analyzing: ' + xhr.statusText;
             }
         }
     };
 
     // Send the request and set status
-    xhr.send(params);
-    statusDisplay.innerHTML = 'Saving...';
+    xhr.send(formData);
+    statusDisplay.innerHTML = 'Analyzing Tweet...';
 }
 
 // When the popup HTML has loaded
