@@ -2,7 +2,9 @@
 // injected and returned its results
 function onPageDetailsReceived(pageDetails) {
     document.getElementById('title').value = pageDetails.title;
-    document.getElementById('url').value = pageDetails.url;
+    var id  = pageDetails.url.split('/')
+    id = id[id.length-1]
+    document.getElementById('url').value = id;
     document.getElementById('summary').innerText = pageDetails.summary;
 }
 
