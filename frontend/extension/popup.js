@@ -15,7 +15,7 @@ function addBookmark() {
     event.preventDefault();
 
     // The URL to POST our data to
-    var postUrl = 'http://post-test.local.com';
+    var postUrl = 'http://localhost:5000/result';
 
     // Set up an asynchronous AJAX POST request
     var xhr = new XMLHttpRequest();

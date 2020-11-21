@@ -2,11 +2,12 @@ import re
 import tweepy
 import pandas as pd
 import time
+from flask import Flask, json
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
-
+app = Flask(__name__)
 
 def search(text_query):
     count = 150
@@ -26,10 +27,17 @@ def search(text_query):
         print('failed on_status,', str(e))
         time.sleep(3)
 
+def check_plag(df, tweet_id):
+    for tweet in df:
+        if not tweet['Tweet Id'] == tweet_id:
+            return False
+
+    return True
 
 def clean_tweet(tweet):
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) |(\w+:\/\/\S+)", " ", tweet).split())
     
+
 def timeline(count):
     # fetching the statuses 
     statuses = api.home_timeline(count=count) 
@@ -40,4 +48,15 @@ def timeline(count):
         if (not result.empty):
           print(result)
 
-timeline(25)
+
+
+
+
+
+@app.route('/result/', methods=['POST', 'GET'])
+def result():
+    return "Hello"
+
+
+if __name__ == "__main__":
+	app.run()
