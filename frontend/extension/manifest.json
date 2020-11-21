@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Tweet Plagarism Checker",
-    "description": "",
+    "description": "Tool to detect plagirism in Twitter Tweets",
     "version": "0.1",
     "background": {
         "scripts": ["event.js"],
