@@ -27,7 +27,6 @@ function addBookmark() {
     var title = document.getElementById('title');
     var url = document.getElementById('url');
     var summary = document.getElementById('summary');
-    var tags = document.getElementById('tags');
 
     var params = 'title=' + encodeURIComponent(title.value) +
                  '&url=' + encodeURIComponent(url.value) +
