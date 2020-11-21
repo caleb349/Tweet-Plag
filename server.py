@@ -2,8 +2,11 @@ import re
 import tweepy
 import pandas as pd
 import time
-from flask import Flask, json
-
+from flask import Flask, json, request, Response
+consumer_key = "q2odiAzgwoTWodRDtKa6pRqtI"
+consumer_secret = "zNQ8SZH0oEVEprQlGNF0BtKrluTYUG1KkautdmkJeWvTgzPMU3"
+access_token = "3413666200-OTGCcLNnd7miQnL60IibnddRLCgsfMXaKfeCgnW"
+access_token_secret = "Tz45UeQam241P8oq9OSJLaw0r1NQiNwB7wET0EZqCpAOF"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
@@ -29,7 +32,7 @@ def search(text_query):
 
 def check_plag(df, tweet_id):
     for tweet in df:
-        if not tweet['Tweet Id'] == tweet_id:
+        if not tweet[1] == tweet_id:
             return False
 
     return True
@@ -55,7 +58,16 @@ def timeline(count):
 
 @app.route('/result/', methods=['POST', 'GET'])
 def result():
-    return "Hello"
+    if request.method == 'POST':
+        tweet_id = request.form['url']
+        tweet = request.form['summary']
+        searching = search(tweet)
+        check = check_plag(searching,tweet_id)
+        if not check:
+            return "Original Tweet"
+        else:
+            return "Plagarized Tweet"
+
 
 
 if __name__ == "__main__":
