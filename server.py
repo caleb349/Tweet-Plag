@@ -35,15 +35,14 @@ def search(text_query):
 def check_plag(df, tweet_id):
     date_time = ""
     date_time2 = ""
-    for tweet in df:
-        if tweet[1] == tweet_id:
-            date_time = tweet[0]
-            date_time = datetime.strptime(date_time, "%m-%d-%Y %H:%M:%S")
+    for tweet in df.index:
+        if int(df['Tweet Id'][tweet]) == int(tweet_id):
+            date_time = df['Created At'][tweet]
+            date_time = datetime.strptime(str(date_time), "%Y-%m-%d %H:%M:%S")
 
-    for tweet in df:
-        if (len(tweet[0]) >= 17):
-            date_time2 = datetime.strptime(tweet[0], "%m-%d-%Y %H:%M:%S")
-        if not tweet[1] == tweet_id and date_time > date_time2:
+    for tweet in df.index:
+        date_time2 = datetime.strptime(str(df['Created At'][tweet]), "%Y-%m-%d %H:%M:%S")
+        if not int(df['Tweet Id'][tweet]) == int(tweet_id) and date_time > date_time2:
             return True
 
     return False
