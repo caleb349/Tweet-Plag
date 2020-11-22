@@ -1,3 +1,4 @@
+
 body {
     min-width: 420px;
     overflow-x: hidden;
@@ -7,8 +8,46 @@ body {
 
 input,
 textarea {
-    width: 420px;
-    
+    width: 400px;
+    left: 100px;
+}
+
+textarea{
+  border:2px solid #1DA1F2;
+    border-radius:40px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    text-align: center;
+}
+
+input {
+  display: flex;
+  align-items: center;
+}
+
+textarea:focus{
+  border-color: #1DA1F2;
+  box-shadow:0 0 8px 0 #1DA1F2;
+}
+
+input[type=text]{
+  border:2px solid #1DA1F2;
+    border-radius:10px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    text-align: center;
+}
+
+
+input[type=text]:focus{
+  border-color: #1DA1F2;
+  box-shadow:0 0 8px 0 #1DA1F2;
 }
 
 input#save {
@@ -25,6 +64,7 @@ h1 {
     text-align: center;
     font-size: 40px;
     margin-top: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 
@@ -45,6 +85,9 @@ h1 {
 }
 
 .button {background-color: #1DA1F2;
-  
-  
+  border-radius:30px;
+}
+
+h4 {
+  text-align: center;
 }
