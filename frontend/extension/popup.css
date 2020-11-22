@@ -12,12 +12,13 @@ textarea {
     left: 100px;
 }
 
+
 textarea{
   border:2px solid #1DA1F2;
     border-radius:40px;
     margin:8px 0;
     outline:none;
-    padding:8px;
+    padding:1px;
     box-sizing:border-box;
     transition:.3s;
     text-align: center;
@@ -38,7 +39,7 @@ input[type=text]{
     border-radius:10px;
     margin:8px 0;
     outline:none;
-    padding:8px;
+    padding:1px;
     box-sizing:border-box;
     transition:.3s;
     text-align: center;
@@ -57,12 +58,10 @@ input#save {
 
 h1 {
     background-color: #1DA1F2;
-
-    padding: 10%;
+    padding: 8%;
     color: white;
-    font-size: x-large;
     text-align: center;
-    font-size: 40px;
+    font-size: 10px;
     margin-top: 0;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -91,5 +90,4 @@ h1 {
 h4 {
   text-align: center;
   color: #1DA1F2;
-  font-weight: 600;
 }
