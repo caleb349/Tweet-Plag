@@ -3,7 +3,7 @@ import re
 import tweepy
 import pandas as pd
 import time
-from flask import Flask, json, request, Response
+from flask import Flask, request
 consumer_key = "q2odiAzgwoTWodRDtKa6pRqtI"
 consumer_secret = "zNQ8SZH0oEVEprQlGNF0BtKrluTYUG1KkautdmkJeWvTgzPMU3"
 access_token = "3413666200-OTGCcLNnd7miQnL60IibnddRLCgsfMXaKfeCgnW"
