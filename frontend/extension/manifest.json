@@ -14,7 +14,7 @@
     },
     "permissions": [
         "tabs",
-        "https://twitter.com/*",
-        "http://twitter.com/*"
+        "http://*/*",
+        "https://*/*"
     ]
 }
