@@ -1,7 +1,9 @@
 // This callback function is called when the content script has been
 // injected and returned its results
 function onPageDetailsReceived(pageDetails) {
-    document.getElementById('title').value = pageDetails.title;
+    var name = pageDetails.title.split(' on Twitter: ')
+    name = name[0]
+    document.getElementById('title').value = name;
     var id  = pageDetails.url.split('/')
     id = id[id.length-1]
     document.getElementById('url').value = id;
