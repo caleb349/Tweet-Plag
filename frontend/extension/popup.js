@@ -49,7 +49,7 @@ function addBookmark() {
                 // window.setTimeout(window.close, 1000);
             } else {
                 // Show what went wrong
-                statusDisplay.innerHTML = 'Error Analyzing: ' + xhr.statusText;
+                statusDisplay.innerHTML = 'Error Analyzing: ' + url.value;
             }
         }
     };

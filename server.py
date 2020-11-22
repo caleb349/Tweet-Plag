@@ -1,4 +1,5 @@
 from datetime import datetime
+from os import environ
 import re
 import tweepy
 import pandas as pd
@@ -41,7 +42,7 @@ def check_plag(df, tweet_id):
         if tweet[1] == tweet_id:
             date_time = tweet[0]
             date_time = datetime.strptime(date_time, "%m-%d-%Y %H:%M:%S")
-    
+
     for tweet in df:
         if (len(tweet[0]) >= 17):
             date_time2 = datetime.strptime(tweet[0], "%m-%d-%Y %H:%M:%S")
@@ -80,4 +81,4 @@ def result():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(environ.get('PORT'))
